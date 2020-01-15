@@ -9,11 +9,11 @@ subscriptions:
 # All fields are mandatory.
 metrics:
         - name: BgpPfxReceived
-          path: /network-instances/network-instance\[name=default\]/protocols/protocol\[identifier=BGP\]\[name=BGP\]/bgp/neighbors/neighbor\[neighbor-address=(?P<neighbor>.+)\]/afi-safis/afi-safi-name=\[openconfig-bgp-types:IPV4_UNICAST\]/state/prefixes/received
+          path: /network-instances/network-instance\[name=default\]/protocols/protocol\[identifier=BGP\]\[name=BGP\]/bgp/neighbors/neighbor\[neighbor-address=(?P<neighbor>.+)\]/afi-safis/afi-safi\[afi-safi-name=openconfig-bgp-types:IPV4_UNICAST\]/state/prefixes/received
         - name: BgpPfxInstalled
-          path: /network-instances/network-instance\[name=default\]/protocols/protocol\[identifier=BGP\]\[name=BGP\]/bgp/neighbors/neighbor\[neighbor-address=(?P<neighbor>.+)\]/afi-safis/afi-safi-name=\[openconfig-bgp-types:IPV4_UNICAST\]/state/prefixes/installed
+          path: /network-instances/network-instance\[name=default\]/protocols/protocol\[identifier=BGP\]\[name=BGP\]/bgp/neighbors/neighbor\[neighbor-address=(?P<neighbor>.+)\]/afi-safis/afi-safi\[afi-safi-name=openconfig-bgp-types:IPV4_UNICAST\]/state/prefixes/installed
         - name: BgpPfxSent
-          path: /network-instances/network-instance\[name=default\]/protocols/protocol\[identifier=BGP\]\[name=BGP\]/bgp/neighbors/neighbor\[neighbor-address=(?P<neighbor>.+)\]/afi-safis/afi-safi-name=\[openconfig-bgp-types:IPV4_UNICAST\]/state/prefixes/sent
+          path: /network-instances/network-instance\[name=default\]/protocols/protocol\[identifier=BGP\]\[name=BGP\]/bgp/neighbors/neighbor\[neighbor-address=(?P<neighbor>.+)\]/afi-safis/afi-safi\[afi-safi-name=openconfig-bgp-types:IPV4_UNICAST\]/state/prefixes/sent
         - name: BGPCPU
           path: /system/processes/process\[pid=2794\]/state/cpu-utilization
         - name: intfCounter

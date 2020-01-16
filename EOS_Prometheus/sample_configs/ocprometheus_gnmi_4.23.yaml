@@ -34,3 +34,11 @@ metrics:
           path: /interfaces/interface\[name=(?P<intf>[^\]]+)\]/state/oper-status
           valuelabel: operState
           defaultvalue: 2
+        - name: subIntfOperState
+          path: /interfaces/interface\[name=(?P<intf>[^\]]+)\]/subinterfaces/subinterface\[index=(?P<subintf>[^\]]+)\]/state/oper-status
+          valuelabel: subOperState
+          defaultvalue: 3
+        - name: subIntfAdminState
+          path: /interfaces/interface\[name=(?P<intf>[^\]]+)\]/subinterfaces/subinterface\[index=(?P<subintf>[^\]]+)\]/state/admin-status
+          valuelabel: subAdminState
+          defaultvalue: 4

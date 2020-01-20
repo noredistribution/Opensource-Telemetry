@@ -34,6 +34,8 @@ metrics:
           path: /interfaces/interface\[name=(?P<intf>[^\]]+)\]/state/oper-status
           valuelabel: operState
           defaultvalue: 2
+        - name: subIntfCounter
+          path: /interfaces/interface\[name=(?P<intf>[^\]]+)\]/subinterfaces/subinterface\[index=(?P<subintf>[^\]]+)\]/state/counters/(?P<countertype>.+)
         - name: subIntfOperState
           path: /interfaces/interface\[name=(?P<intf>[^\]]+)\]/subinterfaces/subinterface\[index=(?P<subintf>[^\]]+)\]/state/oper-status
           valuelabel: subOperState

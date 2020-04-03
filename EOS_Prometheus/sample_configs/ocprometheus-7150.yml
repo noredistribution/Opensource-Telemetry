@@ -27,7 +27,7 @@ subscriptions:
 # All fields are mandatory.
 metrics:
         - name: interfaceDescription
-          path: /Sysdb/interface/config/eth/phy/slice/1/intfConfig/(?P<interface>Ethernet.)/description
+          path: /Sysdb/interface/config/eth/phy/slice/1/intfConfig/(?P<interface>Ethernet.+)/description
           help: Description
           valuelabel: description
           defaultvalue: 15

@@ -21,6 +21,7 @@ subscriptions:
         - /Sysdb/hardware/archer/xcvr/status
         - /Sysdb/interface/config/eth
         - /Kernel/proc
+        - /Sysdb/connectivityMonitor
 
 # Prometheus metrics configuration.
 # If you use named capture groups in the path, they will be extracted into labels with the same name.
@@ -95,4 +96,6 @@ metrics:
           path: /Kernel/proc/stat/(?P<pid>.+)/comm
           help: KernelProcStat
           valuelabel: command
-          defaultvalue: 1
+          defaultvalue: 1 
+        - name: connectivityMonitor          
+          path: /Sysdb/connectivityMonitor/status/hostStatus/(?P<originhost>.+)/defaultStats /(?P<traceType>(?jitter|latency|packetLoss|httpResponseTime)) 

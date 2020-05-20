@@ -1,0 +1,23 @@
+{
+	"comment": "GNMI to OpenTSB",
+	"subscriptions": [
+		"/network-instances/network-instance[name=default]/protocols/protocol[identifier=BGP][name=BGP]/bgp",
+		"/system/processes",
+		"/interfaces/interface"
+	],
+	"metricPrefix": "eos",
+	"metrics": {
+		"BgpPfxReceived": {
+			"path": "/network-instances/network-instance\\[name=default\\]/protocols/protocol\\[identifier=BGP\\]\\[name=BGP\\]/bgp/neighbors/neighbor\\[neighbor\\-address=(?P<neighbor>.+)\\]/afi-safis/afi-safi\\[afi-safi-name=IPV4_UNICAST\\]/state/prefixes/received"
+		},
+		"BgpPfxInstalled": {
+			"path": "/network-instances/network-instance\\[name=default\\]/protocols/protocol\\[identifier=BGP\\]\\[name=BGP\\]/bgp/neighbors/neighbor\\[neighbor\\-address=(?P<neighbor>.+)\\]/afi-safis/afi-safi\\[afi-safi-name=IPV4_UNICAST\\]/state/prefixes/installed"
+		},
+		"BgpPfxSent": {
+			"path": "/network-instances/network-instance\\[name=default\\]/protocols/protocol\\[identifier=BGP\\]\\[name=BGP\\]/bgp/neighbors/neighbor\\[neighbor\\-address=(?P<neighbor>.+)\\]/afi-safis/afi-safi\\[afi-safi-name=IPV4_UNICAST\\]/state/prefixes/sent"
+		},
+		"intfCounter": {
+			"path": "/interfaces/interface\\[name=(?P<intf>[^\\]]+)\\]/state/counters/(?P<countertype>.+)"
+		}
+	}
+}

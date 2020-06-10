@@ -22,6 +22,7 @@ subscriptions:
         - /Sysdb/interface/config/eth
         - /Kernel/proc
         - /Sysdb/connectivityMonitor
+        - /Sysdb/interface/status/eth
 
 # Prometheus metrics configuration.
 # If you use named capture groups in the path, they will be extracted into labels with the same name.
@@ -33,19 +34,19 @@ metrics:
           valuelabel: description
           defaultvalue: 15
         - name: intfCounter
-          path: /Smash/counters/ethIntf/Strata-FixedSystem/current/(counter)/(?P<intf>.+)/statistics/(?P<direction>(?:in|out))(?P<type>(?:Octets|Errors|Discards))
+          path: /Smash/counters/ethIntf/StrataCounters/current/(counter)/(?P<intf>.+)/statistics/(?P<direction>(?:in|out))(?P<type>(?:Octets|Errors|Discards))
           help: Per-Interface Bytes/Errors/Discards Counters
         - name: intfLagCounter
           path: /Smash/interface/counter/lag/current/(counter)/(?P<intf>.+)/statistics/(?P<direction>(?:in|out))(Octets|Errors|Discards)
           help: Per-Lag Bytes/Errors/Discards Counters
         - name: intfPktCounter
-          path: /Smash/counters/ethIntf/Strata-FixedSystem/current/counter/(?P<intf>.+)/statistics/(?P<direction>(?:in|out))(?P<type>(?:Ucast|Multicast|Broadcast))Pkt
+          path: /Smash/counters/ethIntf/StrataCounters/current/counter/(?P<intf>.+)/statistics/(?P<direction>(?:in|out))(?P<type>(?:Ucast|Multicast|Broadcast))Pkt
           help: Per-Interface Unicast/Multicast/Broadcast Packer Counters
         - name: intfLagPktCounter
           path: /Smash/interface/counter/lag/current/(counter)/(?P<intf>.+)/statistics/(?P<direction>(?:in|out))(?P<type>(?:Ucast|Multicast|Broadcast))(Pkt)
           help: Per-Lag Unicast/Multicast/Broadcast Packer Counters
         - name: intfPfcClassCounter
-          path: /Smash/counters/ethIntf/Strata-FixedSystem/current/(counter)/(?P<intf>.+)/ethStatistics/(?P<direction>(?:in|out))(PfcClassFrames)
+          path: /Smash/counters/ethIntf/StrataCounters/current/(counter)/(?P<intf>.+)/ethStatistics/(?P<direction>(?:in|out))(PfcClassFrames)
           help: Per-Interface Input/Output PFC Frames Counters
         - name: tempSensor
           path: /Sysdb/environment/archer/temperature/status/(?P<sensor>.+)/((?:maxT|t)emperature)/value
@@ -97,5 +98,19 @@ metrics:
           help: KernelProcStat
           valuelabel: command
           defaultvalue: 1
-        - name: connectivityMonitor        
+        - name: connectivityMonitor
           path: /Sysdb/connectivityMonitor/status/hostStatus/(?P<originhost>.+)/defaultStats/(?P<traceType>(?:jitter|latency|packetLoss|httpResponseTime))
+        - name: inputBinCtr
+          path: /Smash/counters/ethIntf/StrataCounters/current/(counter)/(?P<intf>.+)/ethStatistics/(?P<type>(?:in1024To1522OctetFrames|in128To255OctetFrames|in256To511OctetFrames|in512To1023OctetFrames|in64OctetFrames|in65To127OctetFrames))
+        - name: outputBinCtr
+          path: /Smash/counters/ethIntf/StrataCounters/current/(counter)/(?P<intf>.+)/ethStatistics/(?P<type>(?:out1024To1522OctetFrames|out128To255OctetFrames|out1523ToMaxOctetFrames|out256To511OctetFrames|out512To1023OctetFrames|out64OctetFrames|out64OctetFrames))/value
+        - name: interfaceLinkStatus
+          path: /Sysdb/interface/status/eth/phy/slice/1/intfStatus/(?P<intf>.+)/linkStatus$
+          help: LinkStatus
+          valuelabel: linkStatus
+          defaultvalue: 4
+        - name: interfaceOperStatus
+          path: /Sysdb/interface/status/eth/phy/slice/1/intfStatus/(?P<intr>.+)/operStatus$
+          help: OperStatus
+          valuelabel: operStatus
+          defaultvalue: 2

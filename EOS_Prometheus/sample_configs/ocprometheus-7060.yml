@@ -102,8 +102,6 @@ metrics:
           path: /Sysdb/connectivityMonitor/status/hostStatus/(?P<originhost>.+)/defaultStats/(?P<traceType>(?:jitter|latency|packetLoss|httpResponseTime))
         - name: inputBinCtr
           path: /Smash/counters/ethIntf/StrataCounters/current/(counter)/(?P<intf>.+)/ethStatistics/(?P<type>(?:in1024To1522OctetFrames|in128To255OctetFrames|in256To511OctetFrames|in512To1023OctetFrames|in64OctetFrames|in65To127OctetFrames))
-        - name: outputBinCtr
-          path: /Smash/counters/ethIntf/StrataCounters/current/(counter)/(?P<intf>.+)/ethStatistics/(?P<type>(?:out1024To1522OctetFrames|out128To255OctetFrames|out1523ToMaxOctetFrames|out256To511OctetFrames|out512To1023OctetFrames|out64OctetFrames|out64OctetFrames))/value
         - name: interfaceLinkStatus
           path: /Sysdb/interface/status/eth/phy/slice/1/intfStatus/(?P<intf>.+)/linkStatus$
           help: LinkStatus

@@ -14,7 +14,7 @@ ENV PATH="${PATH}:${GOROOT}/bin"
 ENV PATH="${PATH}:/workdir/.rbenv/bin:/workdir/.rbenv/shims"
 # RUN yum install ruby-devel gcc make rpm-build rubygems -y
 RUN yum install git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel -y
-RUN curl -sL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash -
+RUN curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash -
 RUN echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 RUN source ~/.bashrc
 RUN rbenv install 2.7.1
